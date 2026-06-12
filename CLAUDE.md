@@ -62,3 +62,19 @@ EvaluationController (/api/v1/diy/evaluate)
 - `hardware_component` 表：id, name, type, brand, tdp, power_supply, performance_score, attributes (JSON)
 - MyBatis 注解 SQL，无 XML 映射
 - 关键技巧：批量查询 `selectBatchIds()` 一次 IO 查完所有配件
+
+### 网络代理
+
+当遇到 GitHub 等外部网络连接超时时，走本地代理 `127.0.0.1:7897`，操作完成后**立即删除**代理配置：
+
+```bash
+# 临时添加代理
+git config --global http.proxy http://127.0.0.1:7897
+git config --global https.proxy http://127.0.0.1:7897
+
+# 执行网络操作（如 git push / git pull / curl 等）
+
+# 操作完成后立即删除
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```

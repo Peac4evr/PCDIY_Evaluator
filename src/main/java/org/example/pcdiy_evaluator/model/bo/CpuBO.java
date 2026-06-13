@@ -14,6 +14,10 @@ public class CpuBO extends BaseHardwareBO {
 
     @Override
     public void parseAttributes(String attributesJson) throws Exception {
+        if (attributesJson == null || attributesJson.trim().isEmpty() || "{}".equals(attributesJson.trim())) {
+            return;
+        }
+
         JsonNode node = MAPPER.readTree(attributesJson);
         this.socket = node.has("socket") ? node.get("socket").asText() : "";
         this.requiredBiosVersion = node.has("required_bios_version") ? node.get("required_bios_version").asText() : "";

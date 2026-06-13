@@ -12,6 +12,10 @@ public class MotherboardBO extends BaseHardwareBO {
 
     @Override
     public void parseAttributes(String attributesJson) throws Exception {
+        if (attributesJson == null || attributesJson.trim().isEmpty() || "{}".equals(attributesJson.trim())) {
+            return;
+        }
+
         JsonNode node = MAPPER.readTree(attributesJson);
         this.socket = node.has("socket") ? node.get("socket").asText() : "";
         this.memoryType = node.has("memory_type") ? node.get("memory_type").asText() : "";

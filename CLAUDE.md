@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Java 21, Spring Boot 4.1.0, MyBatis 4.0.1
 - 数据库: MySQL (`pcdiy_evaluator`)，连接配置在 `application.yaml`
 - 测试：JUnit 5 + Spring Boot Test + MyBatis Test
+- 前端项目: `E:\软件模式与体系结构\frontend`（需要修改前端时在此目录操作）
 
 ## 代码架构
 

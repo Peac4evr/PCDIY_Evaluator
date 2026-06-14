@@ -15,6 +15,7 @@ public class EvaluationReportDTO {
         private boolean success;       // 该项校验是否通过
         private String status;         // 状态状态码: PASSED, WARN, FAILED, SKIPPED (被责任链截断)
         private String message;        // 核心诊断建议描述
+        private List<String> relatedParts = new ArrayList<>(); // 涉及的硬件名称列表
 
         public DiagnosisItem() {}
 
@@ -23,6 +24,14 @@ public class EvaluationReportDTO {
             this.success = success;
             this.status = status;
             this.message = message;
+        }
+
+        public DiagnosisItem(String ruleName, boolean success, String status, String message, List<String> relatedParts) {
+            this.ruleName = ruleName;
+            this.success = success;
+            this.status = status;
+            this.message = message;
+            this.relatedParts = relatedParts != null ? relatedParts : new ArrayList<>();
         }
 
         // Getters and Setters
@@ -34,6 +43,8 @@ public class EvaluationReportDTO {
         public void setStatus(String status) { this.status = status; }
         public String getMessage() { return message; }
         public void setMessage(String message) { this.message = message; }
+        public List<String> getRelatedParts() { return relatedParts; }
+        public void setRelatedParts(List<String> relatedParts) { this.relatedParts = relatedParts != null ? relatedParts : new ArrayList<>(); }
     }
 
     // Getters and Setters

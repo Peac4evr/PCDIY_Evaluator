@@ -35,4 +35,13 @@ public interface HardwareComponentMapper {
             "</script>"
     })
     List<HardwareComponent> selectBatchIds(@Param("ids") List<Long> ids);
+
+    /**
+     * 根据硬件类型查询全部硬件列表（供前端下拉选择使用）
+     *
+     * @param type 硬件类型 (CPU, MOTHERBOARD, MEMORY, GPU, PSU)
+     * @return 该类型的所有硬件实体列表
+     */
+    @Select("SELECT * FROM hardware_component WHERE type = #{type}")
+    List<HardwareComponent> selectByType(@Param("type") String type);
 }

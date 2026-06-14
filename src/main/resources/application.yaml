@@ -10,3 +10,5 @@ mybatis:
   # 打印 SQL 语句，方便我们后续调试规则引擎的查询
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启驼峰命名自动映射：数据库 power_supply → Java powerSupply
+    map-underscore-to-camel-case: true
